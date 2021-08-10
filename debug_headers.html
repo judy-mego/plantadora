@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<title>fetch() all Response Headers</title>
+
+<h1>All Response Headers with fetch()</h1>
+<script>
+ var x= "";
+ if(window.fetch)
+    fetch(location, {method:'HEAD'})
+    .then(function(r) {
+       r.headers.forEach(
+          function(Value, Header) { x= x + Header + "\n" + Value + "\n\n"; }
+       );
+    })
+    .then(function() {
+       document.body.appendChild(document.createElement("pre")).textContent= x;
+    });
+ else
+   document.write("This does not work in your browser - no support for fetch API");
+</script>
